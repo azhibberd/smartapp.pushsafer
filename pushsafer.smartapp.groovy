@@ -112,27 +112,27 @@ def handler(evt) {
         postBody['s'] = "$sound"
     }
 	
-	if (vibration)
+    if (vibration)
     {
         postBody['v'] = "$vibration"
     }
 
-	if (URL)
+    if (URL)
     {
         postBody['u'] = "$URL"
     }
 	
-	if (URLtitle)
+    if (URLtitle)
     {
         postBody['ut'] = "$URLtitle"
     }
 	
-	if (title)
+    if (title)
     {
         postBody['t'] = "$title"
     }
 	
-	if (Time2Live)
+    if (Time2Live)
     {
         postBody['l'] = "$Time2Live"
     }	
