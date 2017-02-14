@@ -18,7 +18,7 @@ definition(
     namespace: "smartapp.pushsafer",
     author: "Kevin Siml",
     description: "Send a Pushsafer.com notification when a device event occurs.",
-    category: "Safety &amp; Security",
+    category: "Safety & Security",
     iconUrl: "https://www.pushsafer.com/icon60.png",
     iconX2Url: "https://www.pushsafer.com/icon120.png",
     iconX3Url: "https://www.pushsafer.com/icon180.png")
