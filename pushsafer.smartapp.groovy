@@ -1,10 +1,28 @@
 /**
  *  Pushsafer
  *
- *  Author: Pushsafer.com
- *  Date: 2017-02-14
- *  Code: https://github.com/smartthings-users/smartapp.pushsafer
+ *  Copyright 2017 Kevin Siml / Pushsafer.com
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License. You may obtain a copy of the License at:
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
+ *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
+ *  for the specific language governing permissions and limitations under the License.
+ *
  */
+definition(
+    name: "Pushsafer",
+    namespace: "smartapp.pushsafer",
+    author: "Kevin Siml",
+    description: "Send a Pushsafer.com notification when a device event occurs.",
+    category: "Safety &amp; Security",
+    iconUrl: "https://www.pushsafer.com/icon60.png",
+    iconX2Url: "https://www.pushsafer.com/icon120.png",
+    iconX3Url: "https://www.pushsafer.com/icon180.png")
+
 
 preferences
 {
@@ -24,14 +42,14 @@ preferences
      }
     section("Pushsafer...") {
         input "privatekey", "text", title: "Private or Alias Key", required: true
-	input "Pushtitle", "text", title: "Title", required: false
+	    input "Pushtitle", "text", title: "Title", required: false
         input "Pushdevice", "text", title: "Device or Device Group ID (blank for all)", required: false
-	input "PushURL", "text", title: "URL or URL scheme", required: false
-	input "PushURLtitle", "text", title: "Title of URL", required: false
-	input "PushTime2Live", "text", title: "Time 2 Live", required: false
-	input "Pushicon", "text", title: "Icon", required: false
-	input "Pushsound", "text", title: "Sound", required: false
-	input "Pushvibration", "text", title: "Vibration", required: false
+	    input "PushURL", "text", title: "URL or URL scheme", required: false
+	    input "PushURLtitle", "text", title: "Title of URL", required: false
+	    input "PushTime2Live", "text", title: "Time 2 Live", required: false
+	    input "Pushicon", "text", title: "Icon", required: false
+	    input "Pushsound", "text", title: "Sound", required: false
+	    input "Pushvibration", "text", title: "Vibration", required: false
     }
 }
 
