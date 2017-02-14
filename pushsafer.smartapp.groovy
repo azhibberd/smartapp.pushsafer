@@ -42,14 +42,14 @@ preferences
      }
     section("Pushsafer...") {
         input "privatekey", "text", title: "Private or Alias Key", required: true
-	    input "Pushtitle", "text", title: "Title", required: false
+        input "Pushtitle", "text", title: "Title", required: false
         input "Pushdevice", "text", title: "Device or Device Group ID (blank for all)", required: false
-	    input "PushURL", "text", title: "URL or URL scheme", required: false
-	    input "PushURLtitle", "text", title: "Title of URL", required: false
-	    input "PushTime2Live", "text", title: "Time 2 Live", required: false
-	    input "Pushicon", "text", title: "Icon", required: false
-	    input "Pushsound", "text", title: "Sound", required: false
-	    input "Pushvibration", "text", title: "Vibration", required: false
+        input "PushURL", "text", title: "URL or URL scheme", required: false
+        input "PushURLtitle", "text", title: "Title of URL", required: false
+        input "PushTime2Live", "text", title: "Time 2 Live", required: false
+        input "Pushicon", "text", title: "Icon", required: false
+        input "Pushsound", "text", title: "Sound", required: false
+        input "Pushvibration", "text", title: "Vibration", required: false
     }
 }
 
