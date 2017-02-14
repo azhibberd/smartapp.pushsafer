@@ -24,14 +24,14 @@ preferences
      }
     section("Pushsafer...") {
         input "privatekey", "text", title: "Private or Alias Key", required: true
-		input "title", "text", title: "Title", required: false
-        input "device", "text", title: "Device or Device Group ID (blank for all)", required: false
-		input "URL", "text", title: "URL or URL scheme", required: false
-		input "URLtitle", "text", title: "Title of URL", required: false
-		input "Time2Live", "text", title: "Time 2 Live", required: false
-		input "icon", "text", title: "Icon", required: false
-		input "sound", "text", title: "Sound", required: false
-		input "vibration", "text", title: "Vibration", required: false
+	input "Pushtitle", "text", title: "Title", required: false
+        input "Pushdevice", "text", title: "Device or Device Group ID (blank for all)", required: false
+	input "PushURL", "text", title: "URL or URL scheme", required: false
+	input "PushURLtitle", "text", title: "Title of URL", required: false
+	input "PushTime2Live", "text", title: "Time 2 Live", required: false
+	input "Pushicon", "text", title: "Icon", required: false
+	input "Pushsound", "text", title: "Sound", required: false
+	input "Pushvibration", "text", title: "Vibration", required: false
     }
 }
 
@@ -97,44 +97,44 @@ def handler(evt) {
     ]
 
     // We only have to define the device if we are sending to a single device
-    if (device)
+    if (Pushdevice)
     {
-        postBody['d'] = "$device"
+        postBody['d'] = "$Pushdevice"
     }
 	
-    if (icon)
+    if (Pushicon)
     {
-        postBody['i'] = "$icon"
+        postBody['i'] = "$Pushicon"
     }
 	
-    if (sound)
+    if (Pushsound)
     {
-        postBody['s'] = "$sound"
+        postBody['s'] = "$Pushsound"
     }
 	
-    if (vibration)
+    if (Pushvibration)
     {
-        postBody['v'] = "$vibration"
+        postBody['v'] = "$Pushvibration"
     }
 
-    if (URL)
+    if (PushURL)
     {
-        postBody['u'] = "$URL"
+        postBody['u'] = "$PushURL"
     }
 	
-    if (URLtitle)
+    if (PushURLtitle)
     {
-        postBody['ut'] = "$URLtitle"
+        postBody['ut'] = "$PushURLtitle"
     }
 	
-    if (title)
+    if (Pushtitle)
     {
-        postBody['t'] = "$title"
+        postBody['t'] = "$Pushtitle"
     }
 	
-    if (Time2Live)
+    if (PushTime2Live)
     {
-        postBody['l'] = "$Time2Live"
+        postBody['l'] = "$PushTime2Live"
     }	
 	
     // Prepare the package to be sent
