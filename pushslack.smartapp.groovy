@@ -1,5 +1,5 @@
 /**
- *  Pushsafer
+ *  Pushslack
  *
  *  Copyright 2017 Kevin Siml / Pushsafer.com
  *
@@ -11,10 +11,10 @@
  *  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed
  *  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License
  *  for the specific language governing permissions and limitations under the License.
- *
- */
+ *  Edited to push messages to Slack
+ */ 
 definition(
-    name: "Pushsafer",
+    name: "Pushslack",
     namespace: "smartapp.pushsafer",
     author: "Kevin Siml",
     description: "Send a Pushsafer.com notification when a device event occurs.",
@@ -42,26 +42,18 @@ preferences
      }
     section("Pushsafer...") {
         input "privatekey", "text", title: "Private or Alias Key", required: true
-        input "Pushtitle", "text", title: "Title", required: false
-        input "Pushdevice", "text", title: "Device or Device Group ID (blank for all)", required: false
-        input "PushURL", "text", title: "URL or URL scheme", required: false
-        input "PushURLtitle", "text", title: "Title of URL", required: false
-        input "PushTime2Live", "text", title: "Time 2 Live", required: false
-        input "Pushicon", "text", title: "Icon", required: false
-        input "Pushsound", "text", title: "Sound", required: false
-        input "Pushvibration", "text", title: "Vibration", required: false
     }
 }
 
 def installed()
 {
-    log.debug "'Pushsafer' installed with settings: ${settings}"
+    log.debug "'Pushslack' installed with settings: ${settings}"
     initialize()
 }
 
 def updated()
 {
-    log.debug "'Pushsafer' updated with settings: ${settings}"
+    log.debug "'Pushslack' updated with settings: ${settings}"
     unsubscribe()
     initialize()
 }
@@ -110,54 +102,22 @@ def handler(evt) {
 
     // Define the initial postBody keys and values for all messages
     def postBody = [
-        k: "$privatekey",
-        m: "${evt.displayName} is ${evt.value}"
+        token: "$privatekey",
+        text: "${evt.displayName} is ${evt.value}",
+        channel: "Smartthings",
+        parse: "full",
+        link_names: "1",
+        unfurl_links: "true",
+        unfurl_media: "false",
+        as_user: "false",
+        icon_url: "http://lorempixel.com/48/48",
+        icon_emoji:":chart_with_upwards_trend:"
     ]
 
-    // We only have to define the device if we are sending to a single device
-    if (Pushdevice)
-    {
-        postBody['d'] = "$Pushdevice"
-    }
-	
-    if (Pushicon)
-    {
-        postBody['i'] = "$Pushicon"
-    }
-	
-    if (Pushsound)
-    {
-        postBody['s'] = "$Pushsound"
-    }
-	
-    if (Pushvibration)
-    {
-        postBody['v'] = "$Pushvibration"
-    }
-
-    if (PushURL)
-    {
-        postBody['u'] = "$PushURL"
-    }
-	
-    if (PushURLtitle)
-    {
-        postBody['ut'] = "$PushURLtitle"
-    }
-	
-    if (Pushtitle)
-    {
-        postBody['t'] = "$Pushtitle"
-    }
-	
-    if (PushTime2Live)
-    {
-        postBody['l'] = "$PushTime2Live"
-    }	
 	
     // Prepare the package to be sent
     def params = [
-        uri: "https://www.pushsafer.com/api",
+        uri: "https://slack.com/api/chat.postMessage",
         body: postBody
     ]
 
